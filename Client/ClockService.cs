@@ -3,7 +3,7 @@ using BlazorWorldClock.Shared;
 
 namespace BlazorWorldClock.Client;
 
-public class ClockService
+public class ClockService : IClockService
 {
     private HttpClient HttpClient { get; }
 
