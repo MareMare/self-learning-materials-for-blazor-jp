@@ -1,4 +1,5 @@
-﻿using BlazorWorldClock.Client;
+﻿using Blazored.LocalStorage;
+using BlazorWorldClock.Client;
 using Microsoft.AspNetCore.Components.Web;
 using Microsoft.AspNetCore.Components.WebAssembly.Hosting;
 
@@ -7,6 +8,8 @@ builder.RootComponents.Add<App>("#app");
 builder.RootComponents.Add<HeadOutlet>("head::after");
 
 builder.Services.AddScoped(sp => new HttpClient { BaseAddress = new Uri(builder.HostEnvironment.BaseAddress) });
-builder.Services.AddScoped<IClockService, ClockService>();
+builder.Services.AddBlazoredLocalStorage();
+// builder.Services.AddScoped<IClockService, ClockService>();
+builder.Services.AddScoped<IClockService, LocalStorageClockService>();
 
 await builder.Build().RunAsync();
